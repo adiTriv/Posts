@@ -121,8 +121,10 @@ def deleteProfile(user_id):
     if request.method == 'POST':
         session = connectDB()
         user = session.query(Users).filter_by(user_id=user_id).one()
+        posts = session.query(Posts).filter_by(user_id=user_id).all()
         if user.name == request.form['confirm']:    
             session.delete(user)
+            session.delete(posts)
             session.commit()
             print('User {0} is deleted'.format(user.name))
             return redirect(url_for('allUsers'))
