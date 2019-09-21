@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+       <div class="container">
+            <div class="clearfix">
+                <h3 class="display-4">{{user.name}}</h3>
+                <p class="lead">{{user.about}}</p>
+                <a style="color: #050ce2" href="{{url_for('addNewPost', user_id=user.user_id)}}">Add Post +</a><br>
+                <a style="color: #050ce2" href="{{url_for('editProfile', user_id=user.user_id)}}">Edit Profile</a>
+            </div>
+       </div>
+        {% for post in posts %}
+             <div class="card shadow p-1 mb-3 mt-3 bg-white rounded">
+                 <div class="card-body">
+                     <h3 class="card-title">{{post.head}}</h3>
+                     <p class="card-text">{{post.post}}</p>
+                     <a class="btn btn-primary btn-sm" href="{{url_for('editPost', user_id=user.user_id, post_id=post.post_id)}}">Edit</a> 
+                     <a class="btn btn-primary btn-sm" href="{{url_for('deletePost', user_id=user.user_id, post_id=post.post_id)}}">Delete</a>
+                 </div>
+             </div>
+         {% endfor %}
+         <a class="btn btn-danger btn-sm" href="{{url_for('deleteProfile', user_id=user.user_id)}}">Delete Account</a>
+
+    </div>
+{% endblock %}

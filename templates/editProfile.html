@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <form action="{{url_for('editProfile', user_id=user.user_id)}}" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control w-75" type="text" id="name" name="name" placeholder="{{user.name}}">
+            </div>
+            <div class="form-group">
+                <label for="about">About</label>
+                <input class="form-control" type="text" id="about" name="about" placeholder="{{user.about}}">
+            </div>
+            <!-- <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div> -->
+            <button type="submit" class="btn btn-primary">Submit!</button>
+        </form>
+    </div>
+{% endblock %}

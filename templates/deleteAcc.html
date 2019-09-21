@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+       <h1>Are you sure, you want to <span class="text-danger">delete</span> this account..?</h1>
+       <form action="{{url_for('deleteProfile', user_id=user.user_id)}}" method="post">
+            <div class="form-group">
+                <input class="form-control" type="text" name="confirm" placeholder="Type your name to confirm">
+            </div>
+            <button class="btn btn-danger" type="submit">Delete</button>
+            <a class="btn btn-primary" href="{{url_for('userProfile', user_id=user.user_id)}}">Cancel</a>
+       </form>
+       </div>
+    </div>
+{% endblock %}
